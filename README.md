@@ -1,4 +1,4 @@
-# This is code for paper "Enabling Efficient Error-controlled Lossy Compression for Unstructured Scientific Data"
+# Unstructured Data Compression
 
 # Installation
 sh build_script.sh <br>
