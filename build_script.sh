@@ -10,6 +10,7 @@ git clone https://github.com/KarypisLab/METIS.git
 # build GSL
 curl -O https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz
 tar xfz gsl-2.7.1.tar.gz
+rm gsl-2.7.1.tar.gz
 cd gsl-2.7.1
 mkdir -p gsl
 ./configure --prefix=${source_dir}/external/gsl-2.7.1/gsl
@@ -25,6 +26,17 @@ mkdir -p build
 mkdir -p install
 cd build
 cmake -DCMAKE_INSTALL_PREFIX:PATH=${external_dir}/SZ3/install -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ ..
+make -j 8
+make install
+
+# build FTK for evaluation of critical point preservation
+cd ${external_dir}
+git clone https://github.com/hguo/ftk.git
+cd ftk
+mkdir -p install
+mkdir -p build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX:PATH=${external_dir}/ftk/install ..
 make -j 8
 make install
 

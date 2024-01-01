@@ -27,7 +27,7 @@ int main(int argc, char ** argv){
             break;
         }
         case 2:{
-            printf("Deompress using NBP-IDW for Critical Points Preservation\n");
+            printf("Decompress using NBP-IDW for Critical Points Preservation\n");
             int num_data_files = atoi(argv[arg_pos++]);
             std::vector<std::string> data_files;
             for(int i=0; i<num_data_files; i++){

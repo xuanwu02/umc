@@ -314,7 +314,7 @@ umc_decompress_prediction_by_adjacent_nodes_cp_preserve(int reorder_opt, const s
     setup_time = (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec)/(double)1000000000;
     printf("setup time = %.6f\n", setup_time);
     T * dec_data = (T *) malloc(d*num_elements*sizeof(T));
-    double compression_time = 0;
+    double decompression_time = 0;
     err = clock_gettime(CLOCK_REALTIME, &start);
     size_t input_size = 0;
     auto input = readfile<unsigned char>(compressed_file.c_str(), input_size);
@@ -322,8 +322,8 @@ umc_decompress_prediction_by_adjacent_nodes_cp_preserve(int reorder_opt, const s
     auto compressed = lossless.decompress(input.data(), input_size);
     umc_decompress_prediction_by_adjacent_nodes_cp_preserve<T>(compressed, num_elements, processed_adj_nodes, dec_data);
 	err = clock_gettime(CLOCK_REALTIME, &end);
-    compression_time = (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec)/(double)1000000000;
-    printf("decompression time = %.6f\n", compression_time);
+    decompression_time = (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec)/(double)1000000000;
+    printf("decompression time = %.6f\n", decompression_time);
     free(compressed);
     T * dec_data_t = (T *) malloc(num_elements*sizeof(T));
     for(int t=0; t<d; t++){
