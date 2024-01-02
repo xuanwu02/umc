@@ -3,11 +3,19 @@ source_dir=`pwd`
 external_dir=${source_dir}/external
 mkdir -p external
 
-# download METIS
+# build METIS
 cd ${external_dir}
-git clone https://github.com/KarypisLab/METIS.git
+curl -O http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz
+tar xfz metis-5.1.0.tar.gz
+rm metis-5.1.0.tar.gz
+cd metis-5.1.0
+mkdir -p install
+make config prefix=${external_dir}/metis-5.1.0/install
+make -j 8
+make install
 
 # build GSL
+cd ${external_dir}
 curl -O https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz
 tar xfz gsl-2.7.1.tar.gz
 rm gsl-2.7.1.tar.gz

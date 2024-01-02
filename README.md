@@ -19,7 +19,7 @@ Compressed files are data/momentumX.dat.umc and data/velocityX.dat.umc
 Decompressed files are data/momentumX.dat.umc.out and data/velocityX.dat.umc.out
 
 # Enabling critical point preservation
-The LES data file "velocity.dat" contains turbulent velovity in three dimensions. Seperate data files are "vx.dat", "vy.dat" and "vz.dat". LES dataset is not included in this repo due to size constraints.
+The LES data file "velocity.dat" contains turbulent velovity in three dimensions. Separate data files are "vx.dat", "vy.dat" and "vz.dat". LES dataset is not included in this repo due to size constraints.
 
 ## Compression
 ./build/test/test_comp_decomp_cp_preserve coordinates.dat connectivity.dat 0 3 1 1 velocity.dat 0.05
