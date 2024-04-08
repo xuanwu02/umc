@@ -2,8 +2,8 @@
 Project: UMC
 
 # Installation
-git clone https://github.com/xuanwu02/unstructured_data_compression.git <br>
-cd unstructured_data_compression <br>
+git clone https://github.com/xuanwu02/umc.git <br>
+cd umc <br>
 sh build_script.sh <br>
 
 # Run compression and decompression
