@@ -18,23 +18,24 @@ int main(int argc, char **argv){
 
     using T = float;
     int arg_pos = 1;
-    std::string position_file(argv[arg_pos++]);
-    std::string connectivity_file(argv[arg_pos++]);
+    std::string data_dir(argv[arg_pos++]);
+    std::string var_name(argv[arg_pos++]);
+    std::string position_file(data_dir + argv[arg_pos++]);
+    std::string conn_file(data_dir + argv[arg_pos++]);
     int from_edge = atoi(argv[arg_pos++]);
     int d = atoi(argv[arg_pos++]);
     int reorder_opt = atoi(argv[arg_pos++]);
-    int num_data_files = atoi(argv[arg_pos++]);
-    std::string data_head(argv[arg_pos++]);
+    int num_timestep = atoi(argv[arg_pos++]);
     std::vector<std::string> data_files;
-    for(int i=0; i<num_data_files; i++){
-        data_files.push_back(argv[arg_pos++]);
+    for(int i=0; i<num_timestep; i++){
+        data_files.push_back(data_dir + var_name + ".dat." + std::to_string(i));
     }
     size_t num = 0;
     auto positions = readfile<T>(position_file.c_str(), num);
     assert(num % d == 0);
     size_t num_elements = num / d;
     printf("num_elements = %zu\n", num_elements);
-    auto conn = readfile<int>(connectivity_file.c_str(), num);
+    auto conn = readfile<int>(conn_file.c_str(), num);
     auto adj_list = generate_adjacent_list(num_elements, d, conn, from_edge);
     std::vector<int32_t> index_map;
     std::string suffix = ".rod";
@@ -66,7 +67,7 @@ int main(int argc, char **argv){
     auto reordered_position = reorder(positions, index_map, num_elements, d);
     auto reordered_conn = reorder_conn(conn, index_map, d);
     writefile((position_file + suffix).c_str(), reordered_position.data(), reordered_position.size());
-    writefile((connectivity_file + suffix).c_str(), reordered_conn.data(), reordered_conn.size());
+    writefile((conn_file + suffix).c_str(), reordered_conn.data(), reordered_conn.size());
     for(int i=0; i<data_files.size(); i++){
         size_t num_elements = 0;        
         auto data = readfile<T>(data_files[i].c_str(), num_elements);
