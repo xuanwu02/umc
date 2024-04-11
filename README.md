@@ -9,14 +9,14 @@ sh build_script.sh <br>
 # Run compression and decompression
 
 ## Compression
-./build/test/test_compress data/coordinates.dat data/connectivity.dat 1 2 2 1 2 data/momentumX.dat data/velocityX.dat 0 1e-2 2
+./build/test/test_compress data/Katrina attr0 coordinates.dat connectivity.dat 0 3 1 1 3 0 1e-2 1
 
-Compressed files are data/momentumX.dat.umc and data/velocityX.dat.umc
+Compressed files are data/Katrina/attr0.dat.0.umc, data/Katrina/attr0.dat.1.umc, data/Katrina/attr0.dat.2.umc. 
 
 ## Decompression
-./build/test/test_decompress data/coordinates.dat data/connectivity.dat 1 2 2 1 2 data/momentumX.dat data/velocityX.dat
+./build/test/test_decompress data/Katrina attr0 coordinates.dat connectivity.dat 0 3 1 1 3
 
-Decompressed files are data/momentumX.dat.umc.out and data/velocityX.dat.umc.out
+Decompressed files are data/Katrina/attr0.dat.0.umc.out, data/Katrina/attr0.dat.1.umc.out, data/Katrina/attr0.dat.2.umc.out.
 
 # Enabling critical point preservation
 The LES data file "velocity.dat" contains turbulent velovity in three dimensions. Separate data files are "vx.dat", "vy.dat" and "vz.dat". LES dataset is not included in this repo due to size constraints.

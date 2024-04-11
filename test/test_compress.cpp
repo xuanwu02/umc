@@ -12,18 +12,20 @@ int main(int argc, char ** argv){
 
     using T = float;
     int arg_pos = 1;
-    std::string position_file(argv[arg_pos++]);
-    std::string conn_file(argv[arg_pos++]);
+    std::string data_dir(argv[arg_pos++]);
+    std::string var_name(argv[arg_pos++]);
+    std::string position_file(data_dir + argv[arg_pos++]);
+    std::string conn_file(data_dir + argv[arg_pos++]);
     int from_edge = atoi(argv[arg_pos++]);
     int d = atoi(argv[arg_pos++]);
     int comp_opt = atoi(argv[arg_pos++]);
     int reorder_opt = atoi(argv[arg_pos++]);
-    int num_data_files = atoi(argv[arg_pos++]);
+    int num_timestep = atoi(argv[arg_pos++]);
     std::vector<std::string> data_files;
-    for(int i=0; i<num_data_files; i++){
-        data_files.push_back(argv[arg_pos++]);
+    for(int i=0; i<num_timestep; i++){
+        data_files.push_back(data_dir + var_name + ".dat." + std::to_string(i));
     }
-    assert(data_files.size() == num_data_files);
+    assert(data_files.size() == num_timestep);
     int eb_mode = atoi(argv[arg_pos++]);
     double eb = atof(argv[arg_pos++]);
     switch(comp_opt){
