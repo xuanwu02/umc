@@ -37,6 +37,17 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=${external_dir}/SZ3/install -DCMAKE_C_COMPILER
 make -j 8
 make install
 
+# build ZFP
+cd ${external_dir}
+git clone https://github.com/LLNL/zfp.git
+cd zfp
+mkdir -p build
+mkdir -p install
+cd build
+cmake -DCMAKE_INSTALL_PREFIX:PATH=${external_dir}/zfp/install -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ ..
+make -j 8
+make install
+
 # build FTK for evaluation of critical point preservation
 cd ${external_dir}
 git clone https://github.com/hguo/ftk.git
