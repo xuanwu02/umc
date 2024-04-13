@@ -1,0 +1,333 @@
+UCX_BIN=/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/bin
+LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
+LD_LIBRARY_PATH=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/lib:/opt/ohpc/pub/mpi/libfabric/1.10.1/lib:/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/lib:/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/lib:/opt/ohpc/pub/compiler/gcc/9.3.0/lib64
+LIBFABRIC_DIR=/opt/ohpc/pub/mpi/libfabric/1.10.1
+__LMOD_REF_COUNT_PATH=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/bin:1;/share/singularity/bin:1;/share/singularity/users/bin:1;/opt/ohpc/pub/mpi/libfabric/1.10.1/bin:1;/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/bin:1;/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/bin:1;/opt/ohpc/pub/compiler/gcc/9.3.0/bin:1;/opt/ohpc/pub/utils/prun/2.1:1;/opt/ohpc/pub/utils/autotools/bin:1;/opt/ohpc/pub/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1
+_ModuleTable002_=LjAiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJnbnU5Iix9LGxpYmZhYnJpYz17WyJmbiJdPSIvb3B0L29ocGMvcHViL21vZHVsZWZpbGVzL2xpYmZhYnJpYy8xLjEwLjEiLFsiZnVsbE5hbWUiXT0ibGliZmFicmljLzEuMTAuMSIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsicmVmX2NvdW50Il09MSxbInN0YWNrRGVwdGgiXT0yLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJsaWJmYWJyaWMiLH0sb2hwYz17WyJmbiJdPSIvb3B0L29ocGMvcHViL21vZHVsZWZpbGVzL29ocGMiLFsiZnVsbE5hbWUiXT0ib2hwYyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic3Rh
+SSH_CONNECTION=10.30.4.30 35826 10.30.4.49 22
+SPACK_PYTHON=/usr/bin/python3
+INCLUDE=/opt/ohpc/pub/compiler/gcc/9.3.0/include
+UCX_LIB=/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/lib
+LMOD_FAMILY_MPI_VERSION=4.0.5
+_=/usr/bin/env
+LANG=en_US.UTF-8
+HISTCONTROL=ignoredups
+LMOD_FAMILY_COMPILER_VERSION=9.3.0
+HOSTNAME=rome018
+OLDPWD=/home/USER
+UCX_WARN_UNUSED_ENV_VARS=N
+__LMOD_REF_COUNT__LMFILES_=/opt/ohpc/pub/modulefiles/autotools:1;/opt/ohpc/pub/modulefiles/prun/2.1:1;/opt/ohpc/pub/modulefiles/gnu9/9.3.0:1;/opt/ohpc/pub/modulefiles/ucx/1.9.0:1;/opt/ohpc/pub/modulefiles/libfabric/1.10.1:1;/opt/ohpc/pub/moduledeps/gnu9/openmpi4/4.0.5:1;/opt/ohpc/pub/modulefiles/ohpc:1;/mnt/gpfs3_amd/share/modulefiles/spack/0.16.2-3602-af806a8c1e:1
+__LMOD_REF_COUNT_INCLUDE=/opt/ohpc/pub/compiler/gcc/9.3.0/include:1
+__LMOD_REF_COUNT_LD_LIBRARY_PATH=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/lib:1;/opt/ohpc/pub/mpi/libfabric/1.10.1/lib:1;/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/lib:1;/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/lib:1;/opt/ohpc/pub/compiler/gcc/9.3.0/lib64:1
+__LMOD_REF_COUNT_PKG_CONFIG_PATH=/opt/ohpc/pub/mpi/libfabric/1.10.1/lib/pkgconfig:1;/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/lib/pkgconfig:1;/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/lib/pkgconfig:1
+_ModuleTable004_=PSJwcnVuIix9LHNwYWNrPXtbImZuIl09Ii9tbnQvZ3BmczNfYW1kL3NoYXJlL21vZHVsZWZpbGVzL3NwYWNrLzAuMTYuMi0zNjAyLWFmODA2YThjMWUiLFsiZnVsbE5hbWUiXT0ic3BhY2svMC4xNi4yLTM2MDItYWY4MDZhOGMxZSIsWyJsb2FkT3JkZXIiXT04LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InNwYWNrLzAuMTYuMi0zNjAyLWFmODA2YThjMWUiLH0sdWN4PXtbImZuIl09Ii9vcHQvb2hwYy9wdWIvbW9kdWxlZmlsZXMvdWN4LzEuOS4wIixbImZ1bGxOYW1lIl09InVjeC8xLjkuMCIsWyJsb2FkT3JkZXIiXT00LHByb3BUPXt9LFsicmVmX2NvdW50Il09MSxbInN0YWNrRGVwdGgiXT0yLFsic3RhdHVzIl09
+UCX_DIR=/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0
+XDG_SESSION_ID=505
+USER=USER
+__LMOD_REF_COUNT_MODULEPATH=/mnt/gpfs3_amd/share/modulefiles:1;/mnt/gpfs3_amd/share/apps/Intel/modulefiles:1;/share/apps/spack/0.16.2-3602-af806a8c1e/share/spack/modules/linux-centos8-zen2:1;/share/apps/spack/0.16.2-3602-af806a8c1e/share/spack/modules/linux-centos8-zen:1;/opt/ohpc/pub/moduledeps/gnu9-openmpi4:1;/opt/ohpc/pub/moduledeps/gnu9:1;/opt/ohpc/pub/modulefiles:1
+__LMOD_REF_COUNT_LOADEDMODULES=autotools:1;prun/2.1:1;gnu9/9.3.0:1;ucx/1.9.0:1;libfabric/1.10.1:1;openmpi4/4.0.5:1;ohpc:1;spack/0.16.2-3602-af806a8c1e:1
+UCX_INC=/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/include
+LIBFABRIC_BIN=/opt/ohpc/pub/mpi/libfabric/1.10.1/bin
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+HOME=/home/USER
+LMOD_COLORIZE=no
+SSH_CLIENT=10.30.4.30 35826 22
+LMOD_VERSION=8.2.10
+LMOD_SETTARG_CMD=:
+BASH_ENV=/opt/ohpc/admin/lmod/lmod/init/bash
+XDG_DATA_DIRS=/home/USER/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+LIBFABRIC_INC=/opt/ohpc/pub/mpi/libfabric/1.10.1/include
+__LMOD_REF_COUNT_LIBRARY_PATH=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/lib:1
+LIBRARY_PATH=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/lib
+_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbIk1QSSJdPSJvcGVubXBpNCIsWyJjb21waWxlciJdPSJnbnU5Iix9LG1UPXthdXRvdG9vbHM9e1siZm4iXT0iL29wdC9vaHBjL3B1Yi9tb2R1bGVmaWxlcy9hdXRvdG9vbHMiLFsiZnVsbE5hbWUiXT0iYXV0b3Rvb2xzIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYXV0b3Rvb2xzIix9LGdudTk9e1siZm4iXT0iL29wdC9vaHBjL3B1Yi9tb2R1bGVmaWxlcy9nbnU5LzkuMy4wIixbImZ1bGxOYW1lIl09ImdudTkvOS4z
+LOADEDMODULES=autotools:prun/2.1:gnu9/9.3.0:ucx/1.9.0:libfabric/1.10.1:openmpi4/4.0.5:ohpc:spack/0.16.2-3602-af806a8c1e
+__LMOD_REF_COUNT_MANPATH=/opt/ohpc/pub/mpi/libfabric/1.10.1/share/man:1;/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/share/man:1;/opt/ohpc/pub/compiler/gcc/9.3.0/share/man:1;/opt/ohpc/pub/utils/autotools/share/man:1;/usr/local/share/man:1;/usr/share/man/overrides:1;/usr/share/man/en:1;/usr/share/man:1
+_ModuleTable006_=LH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9vaHBjL3B1Yi9tb2R1bGVmaWxlcyIsfQ==
+_ModuleTable003_=Y2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Im9ocGMiLH0sb3Blbm1waTQ9e1siZm4iXT0iL29wdC9vaHBjL3B1Yi9tb2R1bGVkZXBzL2dudTkvb3Blbm1waTQvNC4wLjUiLFsiZnVsbE5hbWUiXT0ib3Blbm1waTQvNC4wLjUiLFsibG9hZE9yZGVyIl09Nixwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJvcGVubXBpNCIsfSxwcnVuPXtbImZuIl09Ii9vcHQvb2hwYy9wdWIvbW9kdWxlZmlsZXMvcHJ1bi8yLjEiLFsiZnVsbE5hbWUiXT0icHJ1bi8yLjEiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0xLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJd
+LMOD_ROOT=/opt/ohpc/admin/lmod
+SSH_TTY=/dev/pts/0
+MAIL=/var/spool/mail/USER
+SPACK_ROOT=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e
+SHELL=/bin/bash
+TERM=xterm-256color
+_ModuleTable_Sz_=6
+LMOD_FAMILY_COMPILER=gnu9
+SHLVL=2
+MANPATH=/opt/ohpc/pub/mpi/libfabric/1.10.1/share/man:/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/share/man:/opt/ohpc/pub/compiler/gcc/9.3.0/share/man:/opt/ohpc/pub/utils/autotools/share/man:/usr/local/share/man:/usr/share/man/overrides:/usr/share/man/en:/usr/share/man
+LMOD_PREPEND_BLOCK=normal
+MODULEPATH=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/share/spack/modules/linux-centos8-zen:/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/share/spack/modules/linux-centos8-zen2:/mnt/gpfs3_amd/share/modulefiles:/mnt/gpfs3_amd/share/apps/Intel/modulefiles:/share/apps/spack/0.16.2-3602-af806a8c1e/share/spack/modules/linux-centos8-zen2:/share/apps/spack/0.16.2-3602-af806a8c1e/share/spack/modules/linux-centos8-zen:/opt/ohpc/pub/moduledeps/gnu9-openmpi4:/opt/ohpc/pub/moduledeps/gnu9:/opt/ohpc/pub/modulefiles
+MPI_DIR=/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5
+LOGNAME=USER
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/10456/bus
+XDG_RUNTIME_DIR=/run/user/10456
+PATH=/mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/bin:/share/singularity/bin:/share/singularity/users/bin:/opt/ohpc/pub/mpi/libfabric/1.10.1/bin:/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/bin:/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/bin:/opt/ohpc/pub/compiler/gcc/9.3.0/bin:/opt/ohpc/pub/utils/prun/2.1:/opt/ohpc/pub/utils/autotools/bin:/opt/ohpc/pub/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+SLURM_JOB_ID=21405056
+_LMFILES_=/opt/ohpc/pub/modulefiles/autotools:/opt/ohpc/pub/modulefiles/prun/2.1:/opt/ohpc/pub/modulefiles/gnu9/9.3.0:/opt/ohpc/pub/modulefiles/ucx/1.9.0:/opt/ohpc/pub/modulefiles/libfabric/1.10.1:/opt/ohpc/pub/moduledeps/gnu9/openmpi4/4.0.5:/opt/ohpc/pub/modulefiles/ohpc:/mnt/gpfs3_amd/share/modulefiles/spack/0.16.2-3602-af806a8c1e
+MODULESHOME=/opt/ohpc/admin/lmod/lmod
+LMOD_SETTARG_FULL_SUPPORT=no
+PKG_CONFIG_PATH=/opt/ohpc/pub/mpi/libfabric/1.10.1/lib/pkgconfig:/opt/ohpc/pub/mpi/ucx-ohpc/1.9.0/lib/pkgconfig:/opt/ohpc/pub/mpi/openmpi4-gnu9/4.0.5/lib/pkgconfig
+HISTSIZE=1000
+LMOD_PKG=/opt/ohpc/admin/lmod/lmod
+LMOD_CMD=/opt/ohpc/admin/lmod/lmod/libexec/lmod
+_ModuleTable005_=ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJ1Y3giLH0sfSxtcGF0aEE9eyIvbW50L2dwZnMzX2FtZC9zaGFyZS9tb2R1bGVmaWxlcyIsIi9tbnQvZ3BmczNfYW1kL3NoYXJlL2FwcHMvSW50ZWwvbW9kdWxlZmlsZXMiLCIvc2hhcmUvYXBwcy9zcGFjay8wLjE2LjItMzYwMi1hZjgwNmE4YzFlL3NoYXJlL3NwYWNrL21vZHVsZXMvbGludXgtY2VudG9zOC16ZW4yIiwiL3NoYXJlL2FwcHMvc3BhY2svMC4xNi4yLTM2MDItYWY4MDZhOGMxZS9zaGFyZS9zcGFjay9tb2R1bGVzL2xpbnV4LWNlbnRvczgtemVuIiwiL29wdC9vaHBjL3B1Yi9tb2R1bGVkZXBzL2dudTktb3Blbm1waTQiLCIvb3B0L29ocGMvcHViL21vZHVsZWRlcHMvZ251OSIsIi9vcHQvb2hwYy9wdWIvbW9kdWxlZmlsZXMi
+LIBFABRIC_LIB=/opt/ohpc/pub/mpi/libfabric/1.10.1/lib
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LMOD_FULL_SETTARG_SUPPORT=no
+LMOD_DIR=/opt/ohpc/admin/lmod/lmod/libexec
+LMOD_FAMILY_MPI=openmpi4
+BASH_FUNC_module%%=() {  eval $($LMOD_CMD bash "$@") && eval $(${LMOD_SETTARG_CMD:-:} -s sh)
+}
+BASH_FUNC_spack%%=() {  : this is a shell function from: /mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/share/spack/setup-env.sh;
+ : the real spack script is here: /mnt/gpfs3_amd/share/apps/spack/0.16.2-3602-af806a8c1e/bin/spack;
+ _spack_shell_wrapper "$@";
+ return $?
+}
+BASH_FUNC__spack_shell_wrapper%%=() {  for var in LD_LIBRARY_PATH DYLD_LIBRARY_PATH DYLD_FALLBACK_LIBRARY_PATH;
+ do
+ eval "if [ -n \"\${${var}-}\" ]; then export SPACK_$var=\${${var}}; fi";
+ done;
+ if [ -n "${ZSH_VERSION:-}" ]; then
+ emulate -L sh;
+ fi;
+ _sp_flags="";
+ while [ ! -z ${1+x} ] && [ "${1#-}" != "${1}" ]; do
+ _sp_flags="$_sp_flags $1";
+ shift;
+ done;
+ if [ -n "$_sp_flags" ] && [ "${_sp_flags#*h}" != "${_sp_flags}" ] || [ "${_sp_flags#*V}" != "${_sp_flags}" ]; then
+ command spack $_sp_flags "$@";
+ return;
+ fi;
+ _sp_subcommand="";
+ if [ ! -z ${1+x} ]; then
+ _sp_subcommand="$1";
+ shift;
+ fi;
+ case $_sp_subcommand in 
+ "cd")
+ _sp_arg="";
+ if [ -n "$1" ]; then
+ _sp_arg="$1";
+ shift;
+ fi;
+ if [ "$_sp_arg" = "-h" ] || [ "$_sp_arg" = "--help" ]; then
+ command spack cd -h;
+ else
+ LOC="$(spack location $_sp_arg "$@")";
+ if [ -d "$LOC" ]; then
+ cd "$LOC";
+ else
+ return 1;
+ fi;
+ fi;
+ return
+ ;;
+ "env")
+ _sp_arg="";
+ if [ -n "$1" ]; then
+ _sp_arg="$1";
+ shift;
+ fi;
+ if [ "$_sp_arg" = "-h" ] || [ "$_sp_arg" = "--help" ]; then
+ command spack env -h;
+ else
+ case $_sp_arg in 
+ activate)
+ _a=" $@";
+ if [ -z ${1+x} ] || [ "${_a#* --sh}" != "$_a" ] || [ "${_a#* --csh}" != "$_a" ] || [ "${_a#* -h}" != "$_a" ] || [ "${_a#* --help}" != "$_a" ]; then
+ command spack env activate "$@";
+ else
+ eval $(command spack $_sp_flags env activate --sh "$@");
+ fi
+ ;;
+ deactivate)
+ _a=" $@";
+ if [ "${_a#* --sh}" != "$_a" ] || [ "${_a#* --csh}" != "$_a" ]; then
+ command spack env deactivate "$@";
+ else
+ if [ -n "$*" ]; then
+ command spack env deactivate -h;
+ else
+ eval $(command spack $_sp_flags env deactivate --sh);
+ fi;
+ fi
+ ;;
+ *)
+ command spack env $_sp_arg "$@"
+ ;;
+ esac;
+ fi;
+ return
+ ;;
+ "load" | "unload")
+ _a=" $@";
+ if [ "${_a#* --sh}" != "$_a" ] || [ "${_a#* --csh}" != "$_a" ] || [ "${_a#* -h}" != "$_a" ] || [ "${_a#* --help}" != "$_a" ]; then
+ command spack $_sp_flags $_sp_subcommand "$@";
+ else
+ eval $(command spack $_sp_flags $_sp_subcommand --sh "$@" ||                     echo "return 1");
+ fi
+ ;;
+ *)
+ command spack $_sp_flags $_sp_subcommand "$@"
+ ;;
+ esac
+}
+BASH_FUNC_ml%%=() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+Linux rome018 4.18.0-305.10.2.el8_4.x86_64 #1 SMP Tue Jul 20 17:25:16 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              128
+On-line CPU(s) list: 0-127
+Thread(s) per core:  1
+Core(s) per socket:  64
+Socket(s):           2
+NUMA node(s):        8
+Vendor ID:           AuthenticAMD
+CPU family:          23
+Model:               49
+Model name:          AMD EPYC 7702 64-Core Processor
+Stepping:            0
+CPU MHz:             3362.046
+BogoMIPS:            3992.60
+Virtualization:      AMD-V
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            512K
+L3 cache:            16384K
+NUMA node0 CPU(s):   0-15
+NUMA node1 CPU(s):   16-31
+NUMA node2 CPU(s):   32-47
+NUMA node3 CPU(s):   48-63
+NUMA node4 CPU(s):   64-79
+NUMA node5 CPU(s):   80-95
+NUMA node6 CPU(s):   96-111
+NUMA node7 CPU(s):   112-127
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd mba sev ibrs ibpb stibp vmmcall sev_es fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
+MemTotal:       527933372 kB
+MemFree:        515781920 kB
+MemAvailable:   514537056 kB
+Buffers:          142664 kB
+Cached:          2052844 kB
+SwapCached:        49536 kB
+Active:           808508 kB
+Inactive:        2918360 kB
+Active(anon):     599692 kB
+Inactive(anon):  2847884 kB
+Active(file):     208816 kB
+Inactive(file):    70476 kB
+Unevictable:     4194304 kB
+Mlocked:         4194304 kB
+SwapTotal:      23442428 kB
+SwapFree:       21509588 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:       5687024 kB
+Mapped:          1209784 kB
+Shmem:           1940004 kB
+KReclaimable:     324216 kB
+Slab:            1356020 kB
+SReclaimable:     324216 kB
+SUnreclaim:      1031804 kB
+KernelStack:       46464 kB
+PageTables:        26168 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    287409112 kB
+Committed_AS:    8660600 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+Percpu:           414208 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   4898816 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:     3150656 kB
+DirectMap2M:    385452032 kB
+DirectMap1G:    147849216 kB
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0    7:0    0         1 loop 
+loop1    7:1    0         1 loop 
+loop2    7:2    0         1 loop 
+loop3    7:3    0         1 loop 
+loop4    7:4    0         1 loop 
+loop5    7:5    0         1 loop 
+loop6    7:6    0         1 loop 
+loop7    7:7    0         1 loop 
+loop8    7:8    0         1 loop 
+loop9    7:9    0         1 loop 
+loop10   7:10   0         1 loop 
+loop11   7:11   0         1 loop 
+loop12   7:12   0         1 loop 
+loop13   7:13   0         1 loop 
+loop14   7:14   0         1 loop 
+loop15   7:15   0         1 loop 
+loop16   7:16   0         1 loop 
+loop17   7:17   0         1 loop 
+loop18   7:18   0         1 loop 
+loop19   7:19   0         1 loop 
+loop20   7:20   0         1 loop 
+loop21   7:21   0         1 loop 
+loop22   7:22   0         1 loop 
+loop23   7:23   0         1 loop 
+loop24   7:24   0         1 loop 
+loop25   7:25   0         1 loop 
+loop26   7:26   0         1 loop 
+loop27   7:27   0         1 loop 
+loop28   7:28   0         1 loop 
+loop29   7:29   0         1 loop 
+loop30   7:30   0         1 loop 
+loop31   7:31   0         1 loop 
+loop32   7:32   0         1 loop 
+loop33   7:33   0         1 loop 
+loop34   7:34   0         1 loop 
+loop35   7:35   0         1 loop 
+loop36   7:36   0         1 loop 
+loop37   7:37   0         1 loop 
+loop38   7:38   0         1 loop 
+loop39   7:39   0         1 loop 
+loop40   7:40   0         1 loop 
+loop41   7:41   0         1 loop 
+loop42   7:42   0         1 loop 
+loop43   7:43   0         1 loop 
+loop44   7:44   0         1 loop 
+loop45   7:45   0         1 loop 
+loop46   7:46   0         1 loop 
+loop47   7:47   0         1 loop 
+loop48   7:48   0         1 loop 
+loop49   7:49   0         1 loop 
+loop50   7:50   0         1 loop 
+loop51   7:51   0         1 loop 
+loop52   7:52   0         1 loop 
+loop53   7:53   0         1 loop 
+loop54   7:54   0         1 loop 
+loop55   7:55   0         1 loop 
+loop56   7:56   0         1 loop 
+loop57   7:57   0         1 loop 
+loop58   7:58   0         1 loop 
+loop59   7:59   0         1 loop 
+loop60   7:60   0         1 loop 
+loop61   7:61   0         1 loop 
+loop62   7:62   0         1 loop 
+loop63   7:63   0         1 loop 
+loop64   7:64   0         1 loop 
+sda      8:0    1 223.6G  0 disk 
+├─sda1   8:1    1 201.2G  0 part /tmp
+└─sda2   8:2    1  22.4G  0 part [SWAP]
+
+Currently Loaded Modules:
+  1) autotools   2) prun/2.1   3) gnu9/9.3.0   4) ucx/1.9.0   5) libfabric/1.10.1   6) openmpi4/4.0.5   7) ohpc   8) spack/0.16.2-3602-af806a8c1e
+
+ 
+
