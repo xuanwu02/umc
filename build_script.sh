@@ -5,7 +5,7 @@ mkdir -p external
 
 # build METIS
 cd ${external_dir}
-curl -O http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz
+wget https://karypis.github.io/glaros/files/sw/metis/metis-5.1.0.tar.gz
 tar xfz metis-5.1.0.tar.gz
 rm metis-5.1.0.tar.gz
 cd metis-5.1.0
@@ -29,6 +29,7 @@ make install
 cd ${external_dir}
 git clone https://github.com/szcompressor/SZ3.git
 cd SZ3
+git reset --hard be68d645b2e1350adfbd61851c0886b38b876aa5
 cp ${source_dir}/SZ3_CMakeLists.txt CMakeLists.txt
 mkdir -p build 
 mkdir -p install

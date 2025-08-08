@@ -9,12 +9,12 @@ sh build_script.sh <br>
 # Run compression and decompression
 
 ## Compression
-./build/test/test_compress data/Katrina attr0 coordinates.dat connectivity.dat 0 3 1 1 3 0 1e-2 1
+./build/test/test_compress data/Katrina/ attr0 coordinates.dat connectivity.dat 0 3 4 1 3 0 1e-2 4 10
 
 Compressed files are data/Katrina/attr0.dat.0.umc, data/Katrina/attr0.dat.1.umc, data/Katrina/attr0.dat.2.umc. 
 
 ## Decompression
-./build/test/test_decompress data/Katrina attr0 coordinates.dat connectivity.dat 0 3 1 1 3
+./build/test/test_decompress data/Katrina/ attr0 coordinates.dat connectivity.dat 0 3 4 1 3 10
 
 Decompressed files are data/Katrina/attr0.dat.0.umc.out, data/Katrina/attr0.dat.1.umc.out, data/Katrina/attr0.dat.2.umc.out.
 

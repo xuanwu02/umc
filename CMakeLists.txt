@@ -11,7 +11,7 @@ find_path(ZFP_INCLUDE_DIR NAMES zfp.h PATHS "${CMAKE_CURRENT_SOURCE_DIR}/externa
 find_library(ZFP_LIBRARY NAMES zfp PATHS "${CMAKE_CURRENT_SOURCE_DIR}/external/zfp/install/lib")
 find_path(METIS_INCLUDE_DIR NAMES metis.h PATHS "${CMAKE_CURRENT_SOURCE_DIR}/external/metis-5.1.0/install/include")
 find_library(METIS_LIBRARY NAMES metis PATHS "${CMAKE_CURRENT_SOURCE_DIR}/external/metis-5.1.0/install/lib")
-find_package(ftk REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/external/ftk/install/lib/cmake/FTK")
+find_package(FTK REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/external/ftk/install/lib/cmake/FTK")
 find_package(SZ3 REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/external/SZ3/install/lib/cmake/SZ3")
 find_package(PkgConfig)
 pkg_search_module(ZSTD IMPORTED_TARGET libzstd)
