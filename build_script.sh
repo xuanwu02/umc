@@ -16,7 +16,7 @@ make install
 
 # build GSL
 cd ${external_dir}
-curl -O https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz
+wget https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz
 tar xfz gsl-2.7.1.tar.gz
 rm gsl-2.7.1.tar.gz
 cd gsl-2.7.1
